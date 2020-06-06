@@ -1,4 +1,5 @@
 import { contentContainer } from "./index";
+import { Todo } from "./todoItem";
 
 export function renderHomePage() {
 	const homePageContainer = document.createElement("div");
@@ -47,6 +48,12 @@ function renderTodoForm() {
 	descriptionLabel.textContent = "Description";
 	dueDateLabel.textContent = "Due Date";
 	priorityLabel.textContent = "Priority";
+
+	todoForm.id = "todo-form";
+	titleInput.id = "todo-title";
+	descriptionInput.id = "todo-description";
+	dueDateInput.id = "todo-due-date";
+	priorityInput.id = "todo-priority";
 	
 	todoForm.appendChild(titleLabel);
 	todoForm.appendChild(titleInput);
@@ -57,6 +64,18 @@ function renderTodoForm() {
 	todoForm.appendChild(priorityLabel);
 	todoForm.appendChild(priorityInput);
 	todoForm.appendChild(submitButton);
+
+	todoForm.addEventListener("submit", (e) => {
+		const title = document.getElementById("todo-title").value;
+		const description = document.getElementById("todo-description").value;
+		const due_date = document.getElementById("todo-due-date").value;
+		const priority = document.getElementById("todo-priority").value;
+
+		e.preventDefault();
+
+		const taskTodo = new Todo(title, description, due_date, priority);
+		console.log(taskTodo);
+});
 
 	return todoForm;
 }
