@@ -1,5 +1,9 @@
 import { contentContainer } from "./index";
 import { Todo } from "./todoItem";
+import { addTodoItem } from "./todoLibrary";
+import { displayList } from "./todoLibrary";
+import { renderTodoList } from "./todoLibrary";
+
 
 export function renderHomePage() {
 	const homePageContainer = document.createElement("div");
@@ -10,11 +14,14 @@ export function renderHomePage() {
 	buttonContainer.id = "button-container";
 	const todoItemButton = document.createElement("button");
 	todoItemButton.textContent = "Add Item";
+	const showListButton = document.createElement("button");
+	showListButton.textContent = "Show List";
 
 	homePageContainer.id = "home-page";
 	
 	navBar.appendChild(heading);
 	buttonContainer.appendChild(todoItemButton);
+	buttonContainer.appendChild(showListButton);
 	navBar.appendChild(buttonContainer);
 	homePageContainer.appendChild(navBar);
 	contentContainer.appendChild(homePageContainer);
@@ -49,6 +56,13 @@ function renderTodoForm() {
 	dueDateLabel.textContent = "Due Date";
 	priorityLabel.textContent = "Priority";
 
+
+	// Inputs to the fields are required
+	titleInput.required = true;
+	descriptionInput.required = true;
+	dueDateInput.required = true;
+	priorityInput.required = true;
+
 	todoForm.id = "todo-form";
 	titleInput.id = "todo-title";
 	descriptionInput.id = "todo-description";
@@ -74,7 +88,9 @@ function renderTodoForm() {
 		e.preventDefault();
 
 		const taskTodo = new Todo(title, description, due_date, priority);
-		console.log(taskTodo);
+		addTodoItem(taskTodo);
+		displayList();
+		renderTodoList();
 });
 
 	return todoForm;
