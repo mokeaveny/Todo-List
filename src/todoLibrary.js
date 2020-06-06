@@ -25,6 +25,9 @@ export function renderTodoList() {
 		todoItemContainer.appendChild(todoDueDate);
 		todoItemContainer.appendChild(todoPriority);
 		contentContainer.appendChild(todoItemContainer);
+
+		const todoForm = document.getElementById("todo-form");
+		contentContainer.removeChild(todoForm);
 	})
 }
 

@@ -30,6 +30,8 @@ export function renderHomePage() {
 		const todoForm = renderTodoForm();
 		contentContainer.appendChild(todoForm);
 	});
+
+	showListButton.addEventListener("click", renderTodoList);
 }
 
 // When the add item button is clicked then the form to create a todo object should be displayed.
@@ -90,7 +92,6 @@ function renderTodoForm() {
 		const taskTodo = new Todo(title, description, due_date, priority);
 		addTodoItem(taskTodo);
 		displayList();
-		renderTodoList();
 });
 
 	return todoForm;
