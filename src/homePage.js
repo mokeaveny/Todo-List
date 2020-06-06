@@ -18,9 +18,10 @@ export function renderHomePage() {
 	homePageContainer.appendChild(navBar);
 	contentContainer.appendChild(homePageContainer);
 
-	todoItemButton.addEventListener("click", todoForm() => {
+	todoItemButton.addEventListener("click", () => {
+		const todoForm = renderTodoForm();
 		contentContainer.appendChild(todoForm);
-	}
+	});
 }
 
 // When the add item button is clicked then the form to create a todo object should be displayed.
