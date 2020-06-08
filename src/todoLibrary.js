@@ -8,8 +8,10 @@ export function addTodoItem(todo) {
 }
 
 export function renderTodoList() {
+	const todoItemContainer = document.createElement("div");
+	todoItemContainer.id = "current-container";
+	
 	todoList.forEach( todoItem => {
-		const todoItemContainer = document.createElement("div");
 		const todoTitle = document.createElement("h1");
 		const todoDesc = document.createElement("p");
 		const todoDueDate = document.createElement("p");
@@ -24,11 +26,10 @@ export function renderTodoList() {
 		todoItemContainer.appendChild(todoDesc);
 		todoItemContainer.appendChild(todoDueDate);
 		todoItemContainer.appendChild(todoPriority);
-		contentContainer.appendChild(todoItemContainer);
-
-		const todoForm = document.getElementById("todo-form");
-		contentContainer.removeChild(todoForm);
 	})
+	const currentContainer = document.getElementById("current-container");
+	contentContainer.removeChild(currentContainer);
+	contentContainer.appendChild(todoItemContainer);
 }
 
 export function displayList() {

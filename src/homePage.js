@@ -17,6 +17,10 @@ export function renderHomePage() {
 	const showListButton = document.createElement("button");
 	showListButton.textContent = "Show List";
 
+	// Created a placehold container that using div and its id prevents
+	const placeholdContainer = document.createElement("div");
+	placeholdContainer.id = "current-container";
+
 	homePageContainer.id = "home-page";
 	
 	navBar.appendChild(heading);
@@ -25,9 +29,12 @@ export function renderHomePage() {
 	navBar.appendChild(buttonContainer);
 	homePageContainer.appendChild(navBar);
 	contentContainer.appendChild(homePageContainer);
+	contentContainer.appendChild(placeholdContainer);
 
 	todoItemButton.addEventListener("click", () => {
 		const todoForm = renderTodoForm();
+		const currentContainer = document.getElementById("current-container");
+		contentContainer.removeChild(currentContainer);
 		contentContainer.appendChild(todoForm);
 	});
 
@@ -36,6 +43,7 @@ export function renderHomePage() {
 
 // When the add item button is clicked then the form to create a todo object should be displayed.
 function renderTodoForm() {
+	const currentContainer = document.createElement("div");
 	const todoForm = document.createElement("form");
 	const titleLabel = document.createElement("label");
 	const titleInput = document.createElement("input");
@@ -65,6 +73,7 @@ function renderTodoForm() {
 	dueDateInput.required = true;
 	priorityInput.required = true;
 
+	currentContainer.id = "current-container";
 	todoForm.id = "todo-form";
 	titleInput.id = "todo-title";
 	descriptionInput.id = "todo-description";
@@ -80,6 +89,7 @@ function renderTodoForm() {
 	todoForm.appendChild(priorityLabel);
 	todoForm.appendChild(priorityInput);
 	todoForm.appendChild(submitButton);
+	currentContainer.appendChild(todoForm);
 
 	todoForm.addEventListener("submit", (e) => {
 		const title = document.getElementById("todo-title").value;
@@ -94,5 +104,5 @@ function renderTodoForm() {
 		displayList();
 });
 
-	return todoForm;
+	return currentContainer;
 }
