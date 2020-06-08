@@ -43,3 +43,21 @@ form {
 	background-color: rgba(176, 196, 222, 0.7);
 	border: 1px solid black;
 }
+
+.todo-item-container {
+	background-color: rgba(176, 196, 222, 0.7);
+	border: 1px solid black;
+	margin-top: 5%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+.todo-item-container h1 {
+	font-size: 50px;
+	font-family: "Luckiest Guy", cursive;
+}
+
+.todo-item-container p {
+	font-size: 25px;
+	font-family: 'News Cycle', sans-serif;
+}

@@ -10,6 +10,7 @@ export function addTodoItem(todo) {
 export function renderTodoList() {
 	const todoItemContainer = document.createElement("div");
 	todoItemContainer.id = "current-container";
+	todoItemContainer.classList.add("todo-item-container");
 	
 	todoList.forEach( todoItem => {
 		const todoTitle = document.createElement("h1");
