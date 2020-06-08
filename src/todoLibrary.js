@@ -8,13 +8,14 @@ export function addTodoItem(todo) {
 }
 
 export function renderTodoList() {
+	// Creates the container to be rendered which is used dependent on either lengths of todoList.
 	const todoItemContainer = document.createElement("div");
 	todoItemContainer.id = "current-container";
 	todoItemContainer.classList.add("todo-item-container");
 
 	if (todoList.length == 0) {
 		const displayEmpty = document.createElement("h1");
-		displayEmpty.textContent = "Hello";
+		displayEmpty.textContent = "Nothing Here Yet, Try Adding Some Items!";
 		todoItemContainer.appendChild(displayEmpty);
 	}
 	
@@ -36,8 +37,6 @@ export function renderTodoList() {
 			todoItemContainer.appendChild(todoPriority);
 		})
 	}
-	console.log("Goes Straight Here");
-	console.log(todoList.length);
 	const currentContainer = document.getElementById("current-container");
 	contentContainer.removeChild(currentContainer);
 	contentContainer.appendChild(todoItemContainer);
